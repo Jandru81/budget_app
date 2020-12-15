@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
+import PropTypes from 'prop-types';
 import Error from './Error';
 
-const Question= () => {
+const Question= ({ setBudget, setRemaining, setQuestion }) => {
 
 //definir el state
 const [ cantidad, setCantidad ] = useState(0);  
@@ -24,7 +25,9 @@ const agregarPresupuesto = e => {
 
     // Si se pasa la validación
     setError(false);
-
+    setBudget(cantidad);
+    setRemaining(cantidad);
+    setQuestion(false);
 }
 
     return (
@@ -52,5 +55,12 @@ const agregarPresupuesto = e => {
     );
 
 }
+
+Question.propTypes = {
+    setBudget: PropTypes.func.isRequired,
+    setRemaining: PropTypes.func.isRequired,
+    setQuestion: PropTypes.func.isRequired
+ 
+ }
 
 export default Question;
